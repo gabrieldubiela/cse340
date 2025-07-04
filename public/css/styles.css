@@ -4,3 +4,334 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* Basic Body and Wrapper Styling (Mobile First) */
+body {
+    font-family: Arial, sans-serif; /* You can change this font */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark grey text */
+}
+
+#wrapper {
+    max-width: 100%; /* For mobile, can be 100% width */
+    margin: 0 auto;
+    background-color: #fff; /* White background for the main content wrapper */
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid; /* Use CSS Grid for overall layout */
+    grid-template-areas:
+        "header"
+        "navigation"
+        "main"
+        "footer";
+    grid-template-rows: auto auto 1fr auto; /* Header, nav, footer take content height; main takes remaining space */
+    min-height: 100vh; /* Ensure wrapper takes at least full viewport height */
+}
+
+/* Header Styling */
+#top-header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333; /* Dark background for header */
+    color: #fff;
+}
+
+#top-header .siteName a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#top-header #tools a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Navigation Styling (Mobile First - Stacked) */
+nav {
+    grid-area: navigation;
+    background-color: #000; /* Black background for nav */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use flexbox for navigation items */
+    flex-direction: column; /* Stack vertically by default */
+    align-items: center;
+}
+
+nav ul li {
+    margin: 5px 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: block; /* Make the whole link area clickable */
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    background-color: #555; /* Slightly lighter on hover/focus */
+}
+
+/* Main Content Area */
+main {
+    grid-area: main;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Hero Section (DeLorean - Mobile) */
+.hero-section {
+    display: flex;
+    flex-direction: column; /* Stack text and image vertically */
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative; /* For text overlay */
+}
+
+.hero-section img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+.hero-text {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px; /* Small margin around the text block */
+    z-index: 1; /* Ensure text is above image if positioned over it later */
+}
+
+.hero-text h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #0ff; /* Cyan color for DeLorean title */
+}
+
+.hero-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.hero-text ul li {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.hero-text button {
+    background-color: #0ff; /* Cyan button */
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-text button:hover {
+    background-color: #0cc; /* Darker cyan on hover */
+}
+
+/* Content Grid (Reviews and Upgrades - Mobile: Stacked) */
+.content-grid {
+    display: flex;
+    flex-direction: column; /* Stack reviews and upgrades vertically */
+    gap: 30px; /* Space between sections */
+}
+
+.reviews-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.reviews-section h2, .upgrades-section h2 {
+    color: #000;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.reviews-section ul {
+    list-style: disc; /* Bullet points */
+    margin-left: 20px;
+    padding: 0;
+}
+
+.reviews-section ul li {
+    margin-bottom: 8px;
+}
+
+.upgrades-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.upgrade-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for mobile */
+    gap: 15px;
+    text-align: center;
+}
+
+.upgrade-item {
+    background-color: #eee;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.upgrade-item:hover {
+    transform: translateY(-5px);
+}
+
+.upgrade-image-wrapper {
+    background-color: #000; /* Black background for image area */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Fixed size for image wrapper */
+    height: 100px;
+}
+
+.upgrade-image-wrapper img {
+    max-width: 80%; /* Fit image within wrapper */
+    max-height: 80%;
+    height: auto;
+}
+
+.upgrade-item a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.upgrade-item a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer Styling */
+footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 15px 20px;
+    background-color: #333; /* Dark background for footer */
+    color: #fff;
+    font-size: 0.85em;
+    margin-top: 20px;
+}
+
+.copyright {
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================================= */
+/* Larger screens (e.g., tablets and desktops) */
+/* ========================================= */
+@media screen and (min-width: 768px) {
+    #wrapper {
+        max-width: 900px; /* Max width for larger screens */
+        grid-template-areas:
+            "header header"
+            "navigation navigation"
+            "main main"
+            "footer footer";
+    }
+
+    /* Navigation - Horizontal for larger screens */
+    nav ul {
+        flex-direction: row; /* Horizontal for larger screens */
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    /* Hero Section - Side-by-side */
+    .hero-section {
+        flex-direction: row; /* Text and image side-by-side */
+        text-align: left;
+        align-items: flex-start; /* Align to top */
+        justify-content: space-between; /* Distribute space */
+    }
+
+    .hero-text {
+        position: absolute; /* Position text over image */
+        top: 20%; /* Adjust as needed */
+        left: 5%; /* Adjust as needed */
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        max-width: 300px; /* Limit text width */
+    }
+
+    .hero-section img {
+        width: 100%; /* Image fills its container */
+        height: auto;
+        margin-top: 0; /* Reset margin */
+    }
+
+    /* Content Grid - Two Columns for larger screens */
+    .content-grid {
+        flex-direction: row; /* Reviews and upgrades side-by-side */
+        justify-content: space-between;
+    }
+
+    .reviews-section {
+        flex: 1; /* Take equal space */
+        margin-right: 20px; /* Space between reviews and upgrades */
+    }
+
+    .upgrades-section {
+        flex: 1; /* Take equal space */
+    }
+
+    .upgrade-grid {
+        grid-template-columns: repeat(2, 1fr); /* Still 2 columns for larger screens, but wider */
+    }
+}
+
+/* Even Larger screens (optional, adjust if needed for very wide layouts) */
+@media screen and (min-width: 1200px) {
+    #wrapper {
+        max-width: 1100px;
+    }
+}
