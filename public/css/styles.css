@@ -21,7 +21,6 @@ body {
     max-width: 100%;
     margin: 0 auto;
     background-color: #fff;
-    border: 5px solid #0ff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: grid;
     grid-template-areas:
@@ -68,7 +67,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     color: #ccc;
 }
@@ -90,7 +89,6 @@ main {
 }
 
 h1 {
-    text-align: center;
     color: #000;
     margin-bottom: 20px;
 }
@@ -101,7 +99,6 @@ h1 {
     align-items: center;
     text-align: center;
     margin-bottom: 40px;
-    position: relative;
 }
 
 .hero-section img {
@@ -116,6 +113,7 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     margin: 10px;
+    margin-top: -80px;
     z-index: 1;
 }
 
@@ -244,6 +242,7 @@ footer {
 @media screen and (min-width: 768px) {
     #wrapper {
         max-width: 900px;
+        border: 5px solid #0ff;
         grid-template-areas:
             "header header"
             "navigation navigation"
