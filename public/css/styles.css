@@ -113,8 +113,9 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     margin: 10px;
-    margin-bottom: -80px;
-    margin-left: -180px;
+    position: absolute;
+    top: 20%;
+    left: 5%;
     z-index: 1;
 }
 
