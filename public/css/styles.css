@@ -1,63 +1,64 @@
-/******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-/* Basic Body and Wrapper Styling (Mobile First) */
 body {
-    font-family: Arial, sans-serif; /* You can change this font */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Light grey background */
-    color: #333; /* Dark grey text */
+    background-color: #f0f0f0;
+    color: #333;
+    background-image:
+        linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000),
+        linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
 }
 
 #wrapper {
-    max-width: 100%; /* For mobile, can be 100% width */
+    max-width: 100%;
     margin: 0 auto;
-    background-color: #fff; /* White background for the main content wrapper */
-    border: 1px solid #ccc;
+    background-color: #fff;
+    border: 5px solid #00F;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: grid; /* Use CSS Grid for overall layout */
+    display: grid;
     grid-template-areas:
         "header"
         "navigation"
         "main"
         "footer";
-    grid-template-rows: auto auto 1fr auto; /* Header, nav, footer take content height; main takes remaining space */
-    min-height: 100vh; /* Ensure wrapper takes at least full viewport height */
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
 }
 
-/* Header Styling */
 #top-header {
     grid-area: header;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #333; /* Dark background for header */
-    color: #fff;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
 }
 
 #top-header .siteName a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
 }
 
 #top-header #tools a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
-/* Navigation Styling (Mobile First - Stacked) */
 nav {
     grid-area: navigation;
-    background-color: #000; /* Black background for nav */
+    background-color: #000;
     padding: 10px 0;
 }
 
@@ -65,8 +66,8 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Use flexbox for navigation items */
-    flex-direction: column; /* Stack vertically by default */
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -78,19 +79,19 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     padding: 8px 15px;
-    display: block; /* Make the whole link area clickable */
+    display: block;
     transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover,
 nav ul li a:focus {
-    background-color: #555; /* Slightly lighter on hover/focus */
+    background-color: #555;
 }
 
-/* Main Content Area */
 main {
     grid-area: main;
     padding: 20px;
+    background-color: #fff;
 }
 
 h1 {
@@ -99,14 +100,13 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Hero Section (DeLorean - Mobile) */
 .hero-section {
     display: flex;
-    flex-direction: column; /* Stack text and image vertically */
+    flex-direction: column;
     align-items: center;
     text-align: center;
     margin-bottom: 40px;
-    position: relative; /* For text overlay */
+    position: relative;
 }
 
 .hero-section img {
@@ -116,18 +116,18 @@ h1 {
 }
 
 .hero-text {
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
     padding: 15px;
     border-radius: 8px;
-    margin: 10px; /* Small margin around the text block */
-    z-index: 1; /* Ensure text is above image if positioned over it later */
+    margin: 10px;
+    z-index: 1;
 }
 
 .hero-text h2 {
     margin-top: 0;
     font-size: 1.8em;
-    color: #0ff; /* Cyan color for DeLorean title */
+    color: #0ff;
 }
 
 .hero-text ul {
@@ -142,7 +142,7 @@ h1 {
 }
 
 .hero-text button {
-    background-color: #0ff; /* Cyan button */
+    background-color: #0ff;
     color: #000;
     border: none;
     padding: 10px 20px;
@@ -154,18 +154,17 @@ h1 {
 }
 
 .hero-text button:hover {
-    background-color: #0cc; /* Darker cyan on hover */
+    background-color: #0cc;
 }
 
-/* Content Grid (Reviews and Upgrades - Mobile: Stacked) */
 .content-grid {
     display: flex;
-    flex-direction: column; /* Stack reviews and upgrades vertically */
-    gap: 30px; /* Space between sections */
+    flex-direction: column;
+    gap: 30px;
 }
 
 .reviews-section {
-    background-color: #f9f9f9;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -180,7 +179,7 @@ h1 {
 }
 
 .reviews-section ul {
-    list-style: disc; /* Bullet points */
+    list-style: disc;
     margin-left: 20px;
     padding: 0;
 }
@@ -190,7 +189,7 @@ h1 {
 }
 
 .upgrades-section {
-    background-color: #f9f9f9;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -198,7 +197,7 @@ h1 {
 
 .upgrade-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns for mobile */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     text-align: center;
 }
@@ -218,19 +217,19 @@ h1 {
 }
 
 .upgrade-image-wrapper {
-    background-color: #000; /* Black background for image area */
+    background-color: #00F;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px; /* Fixed size for image wrapper */
+    width: 100px;
     height: 100px;
 }
 
 .upgrade-image-wrapper img {
-    max-width: 80%; /* Fit image within wrapper */
+    max-width: 80%;
     max-height: 80%;
     height: auto;
 }
@@ -246,14 +245,12 @@ h1 {
     text-decoration: underline;
 }
 
-
-/* Footer Styling */
 footer {
     grid-area: footer;
     text-align: center;
     padding: 15px 20px;
-    background-color: #333; /* Dark background for footer */
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     font-size: 0.85em;
     margin-top: 20px;
 }
@@ -263,12 +260,9 @@ footer {
     padding: 0;
 }
 
-/* ========================================= */
-/* Larger screens (e.g., tablets and desktops) */
-/* ========================================= */
 @media screen and (min-width: 768px) {
     #wrapper {
-        max-width: 900px; /* Max width for larger screens */
+        max-width: 900px;
         grid-template-areas:
             "header header"
             "navigation navigation"
@@ -276,60 +270,74 @@ footer {
             "footer footer";
     }
 
-    /* Navigation - Horizontal for larger screens */
+    #top-header {
+        padding: 30px 40px;
+    }
+
+    #top-header .siteName a {
+        font-size: 2.5em;
+    }
+
+    #top-header #tools a {
+        font-size: 1.1em;
+    }
+
     nav ul {
-        flex-direction: row; /* Horizontal for larger screens */
-        justify-content: center;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 20px;
     }
 
     nav ul li {
-        margin: 0 15px;
+        margin: 0 20px;
     }
 
-    /* Hero Section - Side-by-side */
     .hero-section {
-        flex-direction: row; /* Text and image side-by-side */
+        flex-direction: row;
         text-align: left;
-        align-items: flex-start; /* Align to top */
-        justify-content: space-between; /* Distribute space */
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: relative;
     }
 
     .hero-text {
-        position: absolute; /* Position text over image */
-        top: 20%; /* Adjust as needed */
-        left: 5%; /* Adjust as needed */
+        position: absolute;
+        top: 20%;
+        left: 5%;
         background-color: rgba(0, 0, 0, 0.6);
         padding: 20px;
-        max-width: 300px; /* Limit text width */
+        max-width: 300px;
     }
 
     .hero-section img {
-        width: 100%; /* Image fills its container */
+        width: 100%;
         height: auto;
-        margin-top: 0; /* Reset margin */
+        margin-top: 0;
     }
 
-    /* Content Grid - Two Columns for larger screens */
     .content-grid {
-        flex-direction: row; /* Reviews and upgrades side-by-side */
+        flex-direction: row;
         justify-content: space-between;
     }
 
     .reviews-section {
-        flex: 1; /* Take equal space */
-        margin-right: 20px; /* Space between reviews and upgrades */
+        order: 2; /* Reviews come second */
+        flex: 1;
+        margin-right: 0;
+        margin-left: 20px;
     }
 
     .upgrades-section {
-        flex: 1; /* Take equal space */
+        order: 1; /* Upgrades come first */
+        flex: 1;
+        margin-right: 20px;
     }
 
     .upgrade-grid {
-        grid-template-columns: repeat(2, 1fr); /* Still 2 columns for larger screens, but wider */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Even Larger screens (optional, adjust if needed for very wide layouts) */
 @media screen and (min-width: 1200px) {
     #wrapper {
         max-width: 1100px;
