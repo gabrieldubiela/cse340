@@ -92,6 +92,7 @@ nav ul li a {
     text-decoration: none;
     padding: 8px 15px;
     display: block;
+    color: #fff;
 }
 
 main {
@@ -332,7 +333,6 @@ footer {
 
 .detail-price {
     font-size: 1.5em;
-    color: #0ff;
     font-weight: bold;
     margin-bottom: 15px;
 }
