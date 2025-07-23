@@ -77,6 +77,29 @@ Util.buildClassificationGrid = async function (data) {
   return grid;
 };
 
+/* **************************************
+ * Build the vehicle detail view HTML
+ * ************************************ */
+Util.buildVehicleDetail = async function (vehicle) {
+  let detailHtml = '<div id="vehicle-detail-container">';
+
+  // Vehicle image
+  detailHtml += `<img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" class="vehicle-detail-image">`;
+
+  // Vehicle details section
+  detailHtml += '<div class="vehicle-details-content">';
+  detailHtml += `<h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>`;
+  detailHtml += `<p class="detail-price"><strong>Price:</strong> $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}</p>`;
+  detailHtml += `<p><strong>Description:</strong> ${vehicle.inv_description}</p>`;
+  detailHtml += `<p><strong>Color:</strong> ${vehicle.inv_color}</p>`;
+  detailHtml += `<p><strong>Miles:</strong> ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)}</p>`;
+  detailHtml += `<p><strong>Year:</strong> ${vehicle.inv_year}</p>`;
+  detailHtml += "</div>"; // End vehicle-details-content
+  detailHtml += "</div>"; // End vehicle-detail-container
+
+  return detailHtml;
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
