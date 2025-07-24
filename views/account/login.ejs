@@ -1,0 +1,23 @@
+<%- messages() %>
+
+    <div class="login-container">
+        <h1 class="login-title">
+            <%= title %>
+        </h1>
+
+        <form action="/account/login" method="post" class="login-form">
+            <div class="form-group">
+                <label for="accountEmail" class="login-label">Email:</label>
+                <input type="email" id="accountEmail" name="accountEmail" required class="login-input">
+            </div>
+
+            <div class="form-group">
+                <label for="accountPassword" class="login-label">Password:</label>
+                <input type="password" id="accountPassword" name="accountPassword" required class="login-input">
+            </div>
+
+            <button type="submit" class="login-button">LOGIN</button>
+        </form>
+
+        <p class="signup-link">No account? <a href="/account/register" class="signup-link-anchor">Sign-up</a></p>
+    </div>

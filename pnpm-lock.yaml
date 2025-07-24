@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      body-parser:
+        specifier: ^2.2.0
+        version: 2.2.0
       connect-flash:
         specifier: ^0.1.1
         version: 0.1.1
@@ -38,6 +41,9 @@ importers:
       pg-pool:
         specifier: ^3.10.1
         version: 3.10.1(pg@8.16.3)
+      pnpm:
+        specifier: ^10.13.1
+        version: 10.13.1
     devDependencies:
       nodemon:
         specifier: ^3.1.10
@@ -420,6 +426,11 @@ packages:
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+
+  pnpm@10.13.1:
+    resolution: {integrity: sha512-N+vxpcejDV+r4MXfRO6NpMllygxa89urKMOhaBtwolYhjQXIHJwNz3Z+9rhVHrW5YAQrntQwDFkkIzY3fgHPrQ==}
+    engines: {node: '>=18.12'}
+    hasBin: true
 
   postgres-array@2.0.0:
     resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
@@ -957,6 +968,8 @@ snapshots:
       split2: 4.2.0
 
   picomatch@2.3.1: {}
+
+  pnpm@10.13.1: {}
 
   postgres-array@2.0.0: {}
 

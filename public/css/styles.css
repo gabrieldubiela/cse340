@@ -1,448 +1,602 @@
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
-    background-image:
-        linear-gradient(45deg,
-            #000000 25%,
-            transparent 25%,
-            transparent 75%,
-            #000000 75%,
-            #000000),
-        linear-gradient(45deg,
-            #000000 25%,
-            transparent 25%,
-            transparent 75%,
-            #000000 75%,
-            #000000);
-    background-size: 60px 60px;
-    background-position:
-        0 0,
-        30px 30px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
+  background-image:
+    linear-gradient(
+      45deg,
+      #000000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000000 75%,
+      #000000
+    ),
+    linear-gradient(
+      45deg,
+      #000000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000000 75%,
+      #000000
+    );
+  background-size: 60px 60px;
+  background-position:
+    0 0,
+    30px 30px;
 }
 
 #wrapper {
-    max-width: 100%;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-areas:
-        "header"
-        "navigation"
-        "main"
-        "footer";
-    grid-template-rows: auto auto 1fr auto;
-    min-height: 100vh;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-areas:
+    "header"
+    "navigation"
+    "main"
+    "footer";
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
 }
 
 #top-header {
-    grid-area: header;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    color: #000;
-    padding-bottom: 40px;
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+  padding-bottom: 40px;
 }
 
 #top-header .siteName a {
-    color: #000;
-    text-decoration: none;
-    font-size: 2em;
-    font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 #top-header #tools a {
-    color: #000;
-    text-decoration: none;
-    font-size: 1em;
+  color: #000;
+  text-decoration: none;
+  font-size: 1em;
 }
 
 nav {
-    grid-area: navigation;
-    background-color: #333;
-    padding: 10px 0;
+  grid-area: navigation;
+  background-color: #333;
+  padding: 10px 0;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: #ccc;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #ccc;
 }
 
 nav ul li {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 nav ul li a {
-    text-decoration: none;
-    padding: 8px 15px;
-    display: block;
-    color: #fff;
+  text-decoration: none;
+  padding: 8px 15px;
+  display: block;
+  color: #fff;
 }
 
 main {
-    grid-area: main;
-    padding: 20px;
-    background-color: #fff;
+  grid-area: main;
+  padding: 20px;
+  background-color: #fff;
 }
 
 h1 {
-    color: #000;
-    margin-bottom: 20px;
+  color: #000;
+  margin-bottom: 20px;
 }
 
 .hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .hero-section img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 15px;
+  max-width: 100%;
+  height: auto;
+  margin-top: 15px;
 }
 
 .hero-text {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #0ff;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 10px;
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #0ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px;
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  z-index: 1;
 }
 
 .hero-text h2 {
-    margin-top: 0;
-    font-size: 1.8em;
-    color: #0ff;
+  margin-top: 0;
+  font-size: 1.8em;
+  color: #0ff;
 }
 
 .hero-text ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
 }
 
 .hero-text ul li {
-    font-size: 1em;
-    margin-bottom: 5px;
+  font-size: 1em;
+  margin-bottom: 5px;
 }
 
 .hero-text button {
-    background-color: #0ff;
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 15px;
-    font-weight: bold;
+  background-color: #0ff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-weight: bold;
 }
 
 .content-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .reviews-section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .reviews-section h2,
 .upgrades-section h2 {
-    color: #000;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-    margin-top: 0;
-    margin-bottom: 15px;
+  color: #000;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 15px;
 }
 
 .reviews-section ul {
-    list-style: disc;
-    margin-left: 20px;
-    padding: 0;
+  list-style: disc;
+  margin-left: 20px;
+  padding: 0;
 }
 
 .reviews-section ul li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .upgrades-section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .upgrade-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  text-align: center;
 }
 
 .upgrade-item {
-    background-color: #0ff;
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #0ff;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .upgrade-image-wrapper {
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
 }
 
 .upgrade-image-wrapper img {
-    max-width: 80%;
-    max-height: 80%;
-    height: auto;
+  max-width: 80%;
+  max-height: 80%;
+  height: auto;
 }
 
 .upgrade-item a {
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9em;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
 }
 
 footer {
-    grid-area: footer;
-    text-align: left;
-    padding: 15px 20px;
-    background-color: #fff;
-    color: #000;
-    font-size: 0.85em;
-    margin-top: 20px;
+  grid-area: footer;
+  text-align: left;
+  padding: 15px 20px;
+  background-color: #fff;
+  color: #000;
+  font-size: 0.85em;
+  margin-top: 20px;
 }
 
 .copyright {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* --- Classification Detail Page Styles --- */
 #inv-display {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 #inv-display li {
-    list-style-type: none;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    background-color: #fff;
-    padding: 15px;
-    text-align: center;
+  list-style-type: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  padding: 15px;
+  text-align: center;
 }
 
 #inv-display img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px;
-    margin-bottom: 10px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 #inv-display h2 {
-    font-size: 1.2em;
-    margin-top: 0;
-    margin-bottom: 5px;
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 #inv-display h2 a {
-    text-decoration: none;
-    color: #007bff;
+  text-decoration: none;
+  color: #007bff;
 }
 
 #inv-display span {
-    font-weight: bold;
-    color: #333;
-    display: block;
+  font-weight: bold;
+  color: #333;
+  display: block;
 }
 
 /* --- Vehicle Detail Page Styles --- */
 #vehicle-detail-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .vehicle-detail-image {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .vehicle-details-content {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    text-align: left;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: left;
 }
 
 .vehicle-details-content h2 {
-    color: #000;
-    font-size: 2em;
-    margin-top: 0;
-    margin-bottom: 10px;
+  color: #000;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .detail-price {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .vehicle-details-content p {
-    margin-bottom: 10px;
-    line-height: 1.6;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 .vehicle-details-content strong {
-    color: #000;
+  color: #000;
+}
+
+/* --- Login Page Specific Styles --- */
+
+.login-container {
+  background-color: #34495e;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: white;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.login-title {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.login-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #ecf0f1;
+}
+
+.login-input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ecf0f1;
+  color: #34495e;
+  font-size: 1em;
+}
+
+.login-button {
+  background-color: #596e70;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+
+.login-button:hover {
+  background-color: #6a8284;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.signup-link-anchor {
+  color: #ecf0f1;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.signup-link-anchor:hover {
+  color: #ffffff;
+}
+
+/* Register Page Specific Styles */
+.register-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  color: #333;
+  width: 350px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+}
+
+.register-title {
+  color: #000000;
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.register-form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.register-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.register-input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 1em;
+}
+
+#showPassword {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: small;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.password-info {
+  display: block;
+  font-size: 0.8em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.register-button {
+  background-color: #1a73e8;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+
+.register-button:hover {
+  background-color: #0d47a1;
 }
 
 @media screen and (min-width: 768px) {
-    #wrapper {
-        max-width: 900px;
-        border: 5px solid #0ff;
-        grid-template-areas:
-            "header header"
-            "navigation navigation"
-            "main main"
-            "footer footer";
-    }
+  #wrapper {
+    max-width: 900px;
+    border: 5px solid #0ff;
+    grid-template-areas:
+      "header header"
+      "navigation navigation"
+      "main main"
+      "footer footer";
+  }
 
-    #top-header .siteName a {
-        font-size: 2.5em;
-    }
+  #top-header .siteName a {
+    font-size: 2.5em;
+  }
 
-    #top-header #tools a {
-        font-size: 1.1em;
-    }
+  #top-header #tools a {
+    font-size: 1.1em;
+  }
 
-    nav ul {
-        flex-direction: row;
-        justify-content: space-around;
-        padding-left: 20px;
-    }
+  nav ul {
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 20px;
+  }
 
-    nav ul li {
-        margin: 0 20px;
-        color: #fff;
-    }
+  nav ul li {
+    margin: 0 20px;
+    color: #fff;
+  }
 
-    .hero-section {
-        flex-direction: row;
-        text-align: left;
-        align-items: flex-start;
-        justify-content: flex-start;
-        position: relative;
-    }
+  .hero-section {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+  }
 
-    .hero-text {
-        position: absolute;
-        top: 20%;
-        left: 5%;
-        background-color: rgba(0, 0, 0, 0.6);
-        padding: 20px;
-        max-width: 300px;
-    }
+  .hero-text {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    max-width: 300px;
+  }
 
-    .hero-section img {
-        width: 100%;
-        height: auto;
-        margin-top: 0;
-    }
+  .hero-section img {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
 
-    .content-grid {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  .content-grid {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-    .reviews-section {
-        order: 2;
-        flex: 1;
-        margin-right: 0;
-        margin-left: 0;
-    }
+  .reviews-section {
+    order: 2;
+    flex: 1;
+    margin-right: 0;
+    margin-left: 0;
+  }
 
-    .upgrades-section {
-        order: 1;
-        flex: 1;
-        margin-right: 0;
-    }
+  .upgrades-section {
+    order: 1;
+    flex: 1;
+    margin-right: 0;
+  }
 
-    .upgrade-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .upgrade-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-    #inv-display {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
+#inv-display {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
 
-    #vehicle-detail-container {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+#vehicle-detail-container {
+  flex-direction: row;
+  align-items: flex-start;
+}
 
-    .vehicle-detail-image {
-        max-width: 50%;
-        flex-shrink: 0;
-    }
+.vehicle-detail-image {
+  max-width: 50%;
+  flex-shrink: 0;
+}
 
-    .vehicle-details-content {
-        width: 50%;
-        padding-left: 30px;
-    }
+.vehicle-details-content {
+  width: 50%;
+  padding-left: 30px;
+}
 
 @media screen and (min-width: 1200px) {
-    #wrapper {
-        max-width: 1100px;
-    }
+  #wrapper {
+    max-width: 1100px;
+  }
 }
