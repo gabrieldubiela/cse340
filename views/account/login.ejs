@@ -13,7 +13,8 @@
 
             <div class="form-group">
                 <label for="accountPassword" class="login-label">Password:</label>
-                <input type="password" id="accountPassword" name="accountPassword" required class="login-input">
+                <span class="password-info"> Must be at least 12 characters and have capital letter, number, and special character.</span>
+                <input type="password" id="accountPassword" name="accountPassword" required class="login-input" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
             </div>
 
             <button type="submit" class="login-button">LOGIN</button>

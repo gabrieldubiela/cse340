@@ -26,10 +26,10 @@
 
             <div class="form-group">
                 <label for="account_password" class="register-label">Password:</label>
-                <span class="password-info">
-                    Must be at least 8 characters and have capital letter, number, and special character.
-                </span>
-                <input type="password" id="account_password" name="account_password" required class="register-input">
+                <span class="password-info"> Must be at least 12 characters and have capital letter, number, and special
+                    character.</span>
+                <input type="password" id="account_password" name="account_password" required class="register-input"
+                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
                 <span id="showPassword">Show Password</span>
             </div>
 
@@ -37,27 +37,37 @@
         </form>
     </div>
 
-<script>
-    const showPassword = document.querySelector("#showPassword");
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
 
-    if (showPassword) {
-        showPassword.addEventListener("click", function() {
-            const passwordInput = document.getElementById("account_password"); 
-            
-            if (passwordInput) {
-                const type = passwordInput.getAttribute("type");
-                if (type === "password") {
-                    passwordInput.setAttribute("type", "text");
-                    showPassword.innerHTML = "Hide Password";
+            <script>
+                const showPassword = document.querySelector("#showPassword");
+
+                if (showPassword) {
+                    showPassword.addEventListener("click", function () {
+                        const passwordInput = document.getElementById("account_password");
+
+                        if (passwordInput) {
+                            const type = passwordInput.getAttribute("type");
+                            if (type === "password") {
+                                passwordInput.setAttribute("type", "text");
+                                showPassword.innerHTML = "Hide Password";
+                            } else {
+                                passwordInput.setAttribute("type", "password");
+                                showPassword.innerHTML = "Show Password";
+                            }
+                        } else {
+                            console.error("Error: Password input with ID 'account_password' not found.");
+                        }
+                    });
                 } else {
-                    passwordInput.setAttribute("type", "password");
-                    showPassword.innerHTML = "Show Password";
+                    console.error("Error: Password toggle button with ID 'showPassword' not found.");
                 }
-            } else {
-                console.error("Error: Password input with ID 'account_password' not found.");
-            }
-        });
-    } else {
-        console.error("Error: Password toggle button with ID 'showPassword' not found.");
-    }
-</script>
+            </script>

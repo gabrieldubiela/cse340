@@ -16,25 +16,21 @@ async function buildLogin(req, res, next) {
  *  Deliver registration view
  * *************************************** */
 async function buildRegister(req, res, next) {
-  let nav = await utilities.getNav();
+  let nav = await utilities.getNav()
   res.render("account/register", {
     title: "Register",
     nav,
     errors: null,
-  });
+  })
 }
 
 /* ****************************************
  *  Process Registration
  * *************************************** */
-async function registerAccount(req, res) {
+async function registerAccount(req, res, next) {
   let nav = await utilities.getNav();
-  const {
-    account_firstname,
-    account_lastname,
-    account_email,
-    account_password,
-  } = req.body;
+  const { account_firstname, account_lastname, account_email, account_password } =
+    req.body;
 
   const regResult = await accountModel.registerAccount(
     account_firstname,
