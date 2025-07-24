@@ -1,6 +1,9 @@
 /* *****************************
  *   Register new account
  * *************************** */
+
+const pool = require('../database/');
+
 async function registerAccount(
   account_firstname,
   account_lastname,
