@@ -500,6 +500,30 @@ footer {
   background-color: #0d47a1;
 }
 
+/* management page styles */
+.notice {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.management-links a {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.management-links a:hover {
+    background-color: #0056b3;
+}
+
 @media screen and (min-width: 768px) {
   #wrapper {
     max-width: 900px;

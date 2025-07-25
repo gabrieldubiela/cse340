@@ -12,6 +12,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const session = require("express-session");
 const pool = require("./database/");
+const flash = require("connect-flash");
 
 const static = require("./routes/static");
 const accountRoute = require("./routes/accountRoute");

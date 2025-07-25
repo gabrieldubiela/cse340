@@ -1,7 +1,9 @@
 <%# Header content %>
-<% if (title) { %>
-  <h1><%= title %></h1>
-<% } else { res.redirect('/') } %>
+  <% if (title) { %>
+    <h1>
+      <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 
-<%# Vehicle detail content %>
-<%- vehicleDetails %>
+      <%# Vehicle detail content %>
+        <%- vehicleDetails %>
