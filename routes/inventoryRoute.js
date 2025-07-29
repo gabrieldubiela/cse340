@@ -17,7 +17,7 @@ router.get(
 
 // Route to build inventory management view
 router.get(
-  "/management",
+  "/",
   utilities.handleErrors(invController.buildManagement)
 );
 
@@ -58,7 +58,7 @@ router.get(
 // Route to build the edit inventory view
 router.get(
   "/edit/:inventory_id",
-  utilities.handleErrors(invController.buildEditInventoryView)
+  utilities.handleErrors(invController.editInventoryView )
 );
 
 module.exports = router;
