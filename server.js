@@ -13,6 +13,7 @@ const app = express();
 const session = require("express-session");
 const pool = require("./database/");
 const flash = require("connect-flash");
+const cookieParser = require("cookie-parser")
 
 const static = require("./routes/static");
 const accountRoute = require("./routes/accountRoute");
@@ -79,7 +80,6 @@ app.use(async (req, res, next) => {
 
 /* ***********************
  * Express Error Handler
- * Place after all other middleware
  *************************/
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav();
@@ -96,6 +96,8 @@ app.use(async (err, req, res, next) => {
     nav,
   });
 });
+
+app.use(cookieParser())
 
 /* ***********************
  * Local Server Information
