@@ -30,6 +30,10 @@ router.post(
 );
 
 // Route to Accounts Management Page
-router.get("/account-management", utilities.checkLogin, utilities.handleErrors(accountController.buildAccount));
+router.get(
+  "/account-management",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccount)
+);
 
 module.exports = router;

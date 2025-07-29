@@ -13,7 +13,7 @@ const app = express();
 const session = require("express-session");
 const pool = require("./database/");
 const flash = require("connect-flash");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 
 const static = require("./routes/static");
 const accountRoute = require("./routes/accountRoute");
@@ -60,8 +60,8 @@ app.use(function (req, res, next) {
 });
 
 // Cookie Parser Middleware
-app.use(cookieParser())
-app.use(utilities.checkJWTToken)
+app.use(cookieParser());
+app.use(utilities.checkJWTToken);
 
 /* ***********************
  * Routes
