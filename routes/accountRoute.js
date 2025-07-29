@@ -23,10 +23,7 @@ router.post(
 
 // Process the login request
 router.post(
-  "/login",
-  regValidate.loginRules(),
-  regValidate.checkLoginData,
-  utilities.handleErrors(accountController.accountLogin)
+  "/login", utilities.handleErrors(accountController.accountLogin)
 );
 
 // Route to Accounts Page
