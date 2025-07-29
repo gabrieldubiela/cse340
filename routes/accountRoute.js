@@ -25,9 +25,9 @@ router.post(
 router.post(
   "/login",
   regValidate.loginRules(),
-  regValidate.checkLoginData,
+  regValidate.checkRegData,
   utilities.handleErrors(accountController.accountLogin)
-)
+);
 
 // Route to Accounts Page
 router.get("/accounts", utilities.handleErrors(accountController.buildAccounts));
