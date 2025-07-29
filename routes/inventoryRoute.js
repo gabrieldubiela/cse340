@@ -60,7 +60,7 @@ router.get(
 
 // Route to process the edit inventory form submission
 router.post(
-  "/update/", 
+  "/edit-inventory/", 
   utilities.handleErrors(invController.updateInventory)
 );
 

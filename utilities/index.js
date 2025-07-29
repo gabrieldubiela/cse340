@@ -170,7 +170,7 @@ Util.buildClassificationList = async function (classification_id = null) {
     classificationList += '<option value="' + row.classification_id + '"';
     if (
       classification_id != null &&
-      row.classification_id == row.classification_id
+      Number(row.classification_id) == Number(row.classification_id)
     ) {
       classificationList += " selected ";
     }
