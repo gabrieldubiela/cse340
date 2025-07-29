@@ -1,7 +1,8 @@
 const utilities = require(".");
 const { body, validationResult } = require("express-validator");
 const validate = {};
-const accountModel = require("../models/account-model")
+const accountModel = require("../models/account-model");
+const bcrypt = require("bcryptjs"); 
 
 /*  **********************************
  *  Registration Data Validation Rules
@@ -14,7 +15,7 @@ validate.registrationRules = () => {
       .escape()
       .notEmpty()
       .isLength({ min: 1 })
-      .withMessage("Please provide a first name."), // on error this message is sent.
+      .withMessage("Please provide a first name."),
 
     // lastname is required and must be string
     body("account_lastname")
@@ -22,20 +23,21 @@ validate.registrationRules = () => {
       .escape()
       .notEmpty()
       .isLength({ min: 2 })
-      .withMessage("Please provide a last name."), // on error this message is sent.
+      .withMessage("Please provide a last name."),
 
     // valid email is required and cannot already exist in the database
-body("account_email")
-  .trim()
-  .isEmail()
-  .normalizeEmail() // refer to validator.js docs
-  .withMessage("A valid email is required.")
-  .custom(async (account_email) => {
-    const emailExists = await accountModel.checkExistingEmail(account_email)
-    if (emailExists){
-      throw new Error("Email exists. Please log in or use different email")
-    }
-  }),
+    body("account_email")
+      .trim()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("A valid email is required.")
+      .custom(async (account_email) => {
+        const emailExists =
+          await accountModel.checkExistingEmail(account_email);
+        if (emailExists) {
+          throw new Error("Email exists. Please log in or use different email");
+        }
+      }),
 
     // password is required and must be strong password
     body("account_password")
@@ -74,6 +76,54 @@ validate.checkRegData = async (req, res, next) => {
   next();
 };
 
+/*  **********************************
+ *  Login Validation Rules
+ * ********************************* */
+validate.loginRules = () => {
+  return [
+    // valid email is required and exist in the database
+    body("account_email")
+      .trim()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("A valid email is required.")
+      .custom(async (account_email) => {
+        const emailExists =
+          await accountModel.checkExistingEmail(account_email);
+        if (!emailExists) {
+          throw new Error("Email not registered. Please register first.");
+        }
+      }),
 
+    // password is required and match the one in the database
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .isStrongPassword({
+        minLength: 12,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+      .withMessage("Incorrect password."),
+  ];
+};
 
-module.exports = validate;
+// password is required and matches the one in the database
+(body("account_password")
+  .trim()
+  .notEmpty()
+  .withMessage("Password is required.")
+  .custom(async (account_password, { req }) => {
+    const passwordMatch = await bcrypt.compare(
+      account_password,
+      account.account_password
+    );
+
+    if (!passwordMatch) {
+      throw new Error("Incorrect password.");
+    }
+  }),
+  
+  (module.exports = validate));

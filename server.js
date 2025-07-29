@@ -33,6 +33,8 @@ app.set("layout", "./layouts/layout");
 /* ***********************
  * Middleware
  * ************************/
+
+// Middleware to serve static files
 app.use(
   session({
     store: new (require("connect-pg-simple")(session))({
@@ -46,6 +48,7 @@ app.use(
   })
 );
 
+// Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -97,7 +100,9 @@ app.use(async (err, req, res, next) => {
   });
 });
 
+// Cookie Parser Middleware
 app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * Local Server Information
