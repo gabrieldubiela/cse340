@@ -288,6 +288,53 @@ Util.checkInventoryData = async (req, res, next) => {
   next();
 };
 
+/* **************************************
+ * Check inventory data and return errors or continue
+ * ************************************* */
+Util.checkUpdateData = async (req, res, next) => {
+  const {
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    inv_id,
+  } = req.body;
+
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    let nav = await Util.getNav();
+    let classificationList = await Util.buildClassificationList(
+      Number(classification_id)
+    );
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: "Edit Inventory Item",
+      nav,
+      messages: req.flash(),
+      classificationList,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      inv_id,
+    });
+    return;
+  }
+  next();
+};
+
 /* ****************************************
  * Middleware to check token validity
  **************************************** */

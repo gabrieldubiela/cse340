@@ -11,15 +11,12 @@ router.get(
 
 // Route to build inventory by inventory item view
 router.get(
-  "/detail/:invId",
+  "/detail/:inv_Id",
   utilities.handleErrors(invController.buildByInvId)
 );
 
 // Route to build inventory management view
-router.get(
-  "/",
-  utilities.handleErrors(invController.buildManagement)
-);
+router.get("/", utilities.handleErrors(invController.buildManagement));
 
 // Route to deliver the Add Classification view
 router.get(
@@ -57,8 +54,14 @@ router.get(
 
 // Route to build the edit inventory view
 router.get(
-  "/edit/:inventory_id",
-  utilities.handleErrors(invController.editInventoryView )
+  "/edit/:inv_id",
+  utilities.handleErrors(invController.editInventoryView)
+);
+
+// Route to process the edit inventory form submission
+router.post(
+  "/update/", 
+  utilities.handleErrors(invController.updateInventory)
 );
 
 module.exports = router;

@@ -10,7 +10,7 @@
                     <legend>Vehicle Details</legend>
 
                     <label for="classificationSelect">Classification:</label>
-                    <%- classificationList %>
+                    <%- classificationSelect %>
 
                         <label for="invMake">Make:</label>
                         <input type="text" id="invMake" name="inv_make" required minlength="3"
@@ -54,6 +54,8 @@
                 </fieldset>
 
                 <button type="submit">Edit Vehicle</button>
+                <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+                    <% } %>>
             </form>
 
             <script>
