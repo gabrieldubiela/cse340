@@ -59,6 +59,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Cookie Parser Middleware
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
+
 /* ***********************
  * Routes
  *************************/
@@ -99,10 +103,6 @@ app.use(async (err, req, res, next) => {
     nav,
   });
 });
-
-// Cookie Parser Middleware
-app.use(cookieParser())
-app.use(utilities.checkJWTToken)
 
 /* ***********************
  * Local Server Information
