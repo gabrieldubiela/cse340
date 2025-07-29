@@ -113,4 +113,25 @@ validate.loginRules = () => {
   ];
 };
 
+/* ******************************
+ * Check data and return errors or continue to login
+ * ***************************** */
+validate.checkLoginData = async (req, res, next) => {
+  const { account_email, account_password } = req.body;
+  let errors = [];
+  errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("account/login", {
+      errors,
+      title: "Login",
+      nav,
+      account_email,
+      account_password,
+    });
+    return;
+  }
+  next();
+};
+
   (module.exports = validate);
