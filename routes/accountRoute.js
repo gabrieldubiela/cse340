@@ -30,6 +30,6 @@ router.post(
 );
 
 // Route to Accounts Page
-router.get("/account", utilities.handleErrors(accountController.buildAccounts));
+router.get("/account", utilities.handleErrors(accountController.buildAccount));
 
 module.exports = router;
