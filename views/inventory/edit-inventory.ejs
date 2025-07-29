@@ -1,0 +1,79 @@
+<%# Header content %>
+    <% if (title) { %>
+        <h1>
+            <%= title %>
+        </h1>
+        <% } else { res.redirect('/') } %>
+
+            <form id="editInventoryForm" action="/inv/edit-inventory" method="post">
+                <fieldset>
+                    <legend>Vehicle Details</legend>
+
+                    <label for="classificationList">Classification:</label>
+                    <%- classificationList %>
+
+                        <label for="invMake">Make:</label>
+                        <input type="text" id="invMake" name="inv_make" required minlength="3"
+                            placeholder="Min 3 characters" value="<%= locals.inv_make %>">
+
+                        <label for="invModel">Model:</label>
+                        <input type="text" id="invModel" name="inv_model" required minlength="3"
+                            placeholder="Min 3 characters" value="<%= locals.inv_model %>">
+
+                        <label for="invYear">Year:</label>
+                        <input type="number" id="invYear" name="inv_year" required min="1886"
+                            max="<%= new Date().getFullYear() + 1 %>" value="<%= locals.inv_year %>">
+
+                        <label for="invDescription">Description:</label>
+                        <textarea id="invDescription" name="inv_description" required
+                            rows="4"><%= locals.inv_description %></textarea>
+
+                        <label for="invImage">Image Path:</label>
+                        <input type="text" id="invImage" name="inv_image" required
+                            pattern="^/images/vehicles/.+\.(jpg|jpeg|png|webp)$"
+                            title="Must be a valid image path starting with /images/vehicles/ and ending with .jpg, .jpeg, .png, or .webp"
+                            value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>">
+
+                        <label for="invThumbnail">Thumbnail Path:</label>
+                        <input type="text" id="invThumbnail" name="inv_thumbnail" required
+                            pattern="^/images/vehicles/.+\.(jpg|jpeg|png|webp)$"
+                            title="Must be a valid thumbnail path starting with /images/vehicles/ and ending with .jpg, .jpeg, .png, or .webp"
+                            value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>">
+
+                        <label for="invPrice">Price:</label>
+                        <input type="number" id="invPrice" name="inv_price" required min="0" step="0.01"
+                            placeholder="e.g., 25000.00" value="<%= locals.inv_price %>">
+
+                        <label for="invMiles">Miles:</label>
+                        <input type="number" id="invMiles" name="inv_miles" required min="0"
+                            value="<%= locals.inv_miles %>">
+
+                        <label for="invColor">Color:</label>
+                        <input type="text" id="invColor" name="inv_color" required pattern="^[a-zA-Z]+$"
+                            title="Only letters allowed" value="<%= locals.inv_color %>">
+                </fieldset>
+
+                <button type="submit">Edit Vehicle</button>
+            </form>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const form = document.getElementById('editInventoryForm');
+
+                    form.addEventListener('submit', function (event) {
+                        const inputs = form.querySelectorAll('input, select, textarea');
+                        let formIsValid = true;
+
+                        inputs.forEach(input => {
+                            if (!input.checkValidity()) {
+                                formIsValid = false;
+                            }
+                        });
+
+                        if (!formIsValid) {
+                            event.preventDefault();
+                            alert("Please correct the highlighted fields before submitting.");
+                        }
+                    });
+                });
+            </script>
