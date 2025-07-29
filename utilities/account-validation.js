@@ -95,35 +95,22 @@ validate.loginRules = () => {
         }
       }),
 
-    // password is required and match the one in the database
-    body("account_password")
+    // password is required and matches the one in the database
+    (body("account_password")
       .trim()
       .notEmpty()
-      .isStrongPassword({
-        minLength: 12,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1,
-      })
-      .withMessage("Incorrect password."),
+      .withMessage("Password is required.")
+      .custom(async (account_password, { req }) => {
+        const passwordMatch = await bcrypt.compare(
+          account_password,
+          account.account_password
+        );
+
+        if (!passwordMatch) {
+          throw new Error("Incorrect password.");
+        }
+      })),
   ];
 };
 
-// password is required and matches the one in the database
-(body("account_password")
-  .trim()
-  .notEmpty()
-  .withMessage("Password is required.")
-  .custom(async (account_password, { req }) => {
-    const passwordMatch = await bcrypt.compare(
-      account_password,
-      account.account_password
-    );
-
-    if (!passwordMatch) {
-      throw new Error("Incorrect password.");
-    }
-  }),
-  
-  (module.exports = validate));
+  (module.exports = validate);
