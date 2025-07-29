@@ -29,7 +29,7 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 );
 
-// Route to Accounts Page
-router.get("/account", utilities.handleErrors(accountController.buildAccount));
+// Route to Accounts Management Page
+router.get("/account-management", utilities.checkLogin, utilities.handleErrors(accountController.buildAccount));
 
 module.exports = router;
