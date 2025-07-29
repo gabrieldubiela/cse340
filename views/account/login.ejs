@@ -7,15 +7,15 @@
 
         <form id="loginForm" action="/account/login" method="post" class="login-form">
             <div class="form-group">
-                <label for="accountEmail" class="login-label">Email:</label>
-                <input type="email" id="accountEmail" name="accountEmail" required class="login-input">
+                <label for="account_email" class="login-label">Email:</label>
+                <input type="email" id="account_email" name="account_email" required class="login-input">
             </div>
 
             <div class="form-group">
-                <label for="accountPassword" class="login-label">Password:</label>
+                <label for="account_password" class="login-label">Password:</label>
                 <span class="password-info"> Must be at least 12 characters and have capital letter, number, and special
                     character.</span>
-                <input type="password" id="accountPassword" name="accountPassword" required class="login-input"
+                <input type="password" id="account_password" name="account_password" required class="login-input"
                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
             </div>
 
