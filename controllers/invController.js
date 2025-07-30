@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model");
 const utilities = require("../utilities/");
+const {validationResult} = require("express-validator");
 const invCont = {};
 
 /* ***************************
@@ -92,6 +93,7 @@ invCont.registerClassification = async function (req, res) {
     res.status(201).render("inventory/management", {
       title: "Inventory Management",
       nav,
+      classificationSelect,
       errors: null,
     });
   } else {
@@ -133,6 +135,8 @@ invCont.buildAddInventory = async function (req, res, next) {
  * *************************************** */
 invCont.registerInventory = async function (req, res) { 
   let nav = await utilities.getNav();
+  const errors = validationResult(req);
+
   const {
     inv_make,
     inv_model,
@@ -145,6 +149,27 @@ invCont.registerInventory = async function (req, res) {
     inv_color,
     classification_id,
   } = req.body;
+
+  if (!errors.isEmpty()) { 
+    let classificationList = await utilities.buildClassificationList(Number(classification_id));
+    res.status(400).render("inventory/add-inventory", {
+      title: "Add New Inventory Item",
+      nav,
+      classificationList,
+      errors,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+    });
+    return;
+  }
 
   const invResult = await invModel.addInventory(
     inv_make,
@@ -161,15 +186,11 @@ invCont.registerInventory = async function (req, res) {
 
   if (invResult) {
     req.flash("notice", `The ${inv_make} ${inv_model} was successfully added to inventory.`);
-    res.status(201).render("inventory/management", {
-      title: "Inventory Management",
-      nav,
-      errors: null,
-    });
+    res.status(201).redirect("/inv/"); 
   } else {
     req.flash("notice", "Sorry, adding the new inventory item failed.");
     let classificationList = await utilities.buildClassificationList(Number(classification_id));
-    res.status(501).render("inventory/add-inventory", {
+    res.status(500).render("inventory/add-inventory", {
       title: "Add New Inventory Item",
       nav,
       classificationList,
@@ -183,6 +204,7 @@ invCont.registerInventory = async function (req, res) {
       inv_price,
       inv_miles,
       inv_color,
+      classification_id,
     });
   }
 };

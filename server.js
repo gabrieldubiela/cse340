@@ -14,6 +14,7 @@ const session = require("express-session");
 const pool = require("./database/");
 const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
+const expressMessages = require("express-messages");
 
 const static = require("./routes/static");
 const accountRoute = require("./routes/accountRoute");
@@ -53,9 +54,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Express Messages Middleware
-app.use(require("connect-flash")());
+app.use(flash());
 app.use(function (req, res, next) {
-  res.locals.messages = require("express-messages")(req, res);
+  res.locals.messages = expressMessages(req, res);
   next();
 });
 

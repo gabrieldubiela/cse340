@@ -5,6 +5,20 @@
         </h1>
         <% } else { res.redirect('/') } %>
 
+<% if (typeof messages === 'function' && messages().length > 0) { %>
+  <div class="flash-messages">
+    <%- messages() %> 
+  </div>
+<% } %>
+
+<% if (errors && errors.array && errors.array().length > 0) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
             <form id="addInventoryForm" action="/inv/add-inventory" method="post">
                 <fieldset>
                     <legend>Vehicle Details</legend>
