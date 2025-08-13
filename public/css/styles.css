@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+
+.logout-link {
+  margin-left: 25px;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;

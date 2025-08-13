@@ -32,8 +32,39 @@ router.post(
 // Route to Accounts Management Page
 router.get(
   "/account-management",
-  utilities.checkLogin,
+  utilities.checkJWTToken,
   utilities.handleErrors(accountController.buildAccount)
+);
+
+// Rota to logout request
+router.get(
+  "/logout", 
+  utilities.handleErrors(accountController.accountLogout)
+);
+
+// Route to Update Account Information Page 
+router.get(
+  "/update/:account_id",
+  utilities.checkJWTToken,
+  utilities.handleErrors(accountController.buildUpdateView)
+);
+
+// Route to handle the account information update
+router.post(
+  "/update/", 
+  utilities.checkJWTToken,
+  regValidate.updateAccountRules(),
+  regValidate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+);
+
+// Route to handle the password update
+router.post(
+  "/update-password", 
+  utilities.checkJWTToken,
+  regValidate.updatePasswordRules(),
+  regValidate.checkPasswordData,
+  utilities.handleErrors(accountController.updatePassword)
 );
 
 module.exports = router;

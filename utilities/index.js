@@ -355,19 +355,27 @@ Util.checkJWTToken = (req, res, next) => {
       }
     );
   } else {
+    res.locals.loggedin = 0;
     next();
   }
 };
 
 /* ****************************************
- *  Check Login
- * ************************************ */
-Util.checkLogin = (req, res, next) => {
+ * Middleware to check account type
+ * ****************************************/
+Util.checkAccountType = (req, res, next) => {
   if (res.locals.loggedin) {
-    next();
+    const accountType = res.locals.accountData.account_type;
+
+    if (accountType === 'Employee' || accountType === 'Admin') {
+      next();
+    } else {
+      req.flash("notice", "You do not have permission to access that resource.");
+      res.redirect("/");
+    }
   } else {
-    req.flash("notice", "Please log in.");
-    return res.redirect("/account/login");
+    req.flash("notice", "Please log in to access that resource.");
+    res.redirect("/account/login");
   }
 };
 
