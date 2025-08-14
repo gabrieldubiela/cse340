@@ -4,6 +4,68 @@
   box-sizing: border-box;
 }
 
+#messageInbox tr.unread {
+    background-color: #e6f7ff;
+    font-weight: bold;
+}
+
+#messageInbox tr.read {
+    background-color: #ffffff;
+}
+
+#messageInbox {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#messageInbox th,
+#messageInbox td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+#messageInbox th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.message-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+.message-card.unread {
+    background-color: #e6f7ff;
+    border-color: #91d5ff;
+}
+.message-card.read {
+    background-color: #f0f0f0;
+}
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.message-body {
+    margin-bottom: 10px;
+}
+.message-actions {
+    text-align: right;
+}
+.toggle-read-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
 
 .logout-link {
   margin-left: 25px;

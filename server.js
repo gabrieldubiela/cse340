@@ -19,6 +19,7 @@ const expressMessages = require("express-messages");
 const static = require("./routes/static");
 const accountRoute = require("./routes/accountRoute");
 const inventoryRoute = require("./routes/inventoryRoute");
+const contactRoute = require("./routes/contactRoutes");
 
 const utilities = require("./utilities/");
 const errorController = require("./controllers/errorController");
@@ -77,6 +78,9 @@ app.use("/inv", inventoryRoute);
 
 // Account routes
 app.use("/account", accountRoute);
+
+// Contact routes
+app.use("/contact", contactRoute);
 
 // 500 Error Route
 app.get("/error", utilities.handleErrors(errorController.triggerError));

@@ -1,0 +1,133 @@
+<% if (title) { %>
+    <h1><%- title %></h1>
+<% } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error => { %>
+            <li>
+                <%= error.msg %>
+            </li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<% if (locals.loggedin && (locals.accountData.account_type === 'Admin' || locals.accountData.account_type === 'Employee')) { %>
+    <% if (contactMessages && contactMessages.length > 0) { %>
+        <table id="messageInbox">
+            <thead>
+                <tr>
+                    <th>Read</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% contactMessages.forEach(message => { %>
+                    <tr class="<%= message.is_read ? 'read' : 'unread' %>" id="row-<%= message.id %>">
+                        <td>
+                            <input
+                                type="checkbox"
+                                name="is_read"
+                                data-inquiry-id="<%= message.id %>"
+                                onchange="toggleReadStatus(this)"
+                                <%= message.is_read ? 'checked' : '' %>
+                            />
+                        </td>
+                        <td>
+                            <%= message.name %>
+                        </td>
+                        <td>
+                            <%= message.email %>
+                        </td>
+                        <td>
+                            <%= message.subject %>
+                        </td>
+                        <td>
+                            <%= message.message %>
+                        </td>
+                        <td>
+                            <%= message.sent_at.toLocaleString() %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="notice">You have no new messages.</p>
+    <% } %>
+<% } else { %>
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p>
+            Please use the form below to contact us with any questions or comments.
+        </p>
+
+        <form id="contactForm" action="/contact/" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required
+                value="<%= typeof name !== 'undefined' ? name : '' %>">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required
+                value="<%= typeof email !== 'undefined' ? email : '' %>">
+
+            <label for="phone">Phone (optional):</label>
+            <input type="tel" id="phone" name="phone" pattern="^\d{10,15}$"
+                value="<%= typeof phone !== 'undefined' ? phone : '' %>">
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required
+                value="<%= typeof subject !== 'undefined' ? subject : '' %>">
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5"
+                required><%= typeof message !== 'undefined' ? message : '' %></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+<% } %>
+
+<script>
+    async function toggleReadStatus(checkbox) {
+        const inquiryId = checkbox.getAttribute('data-inquiry-id');
+        const isChecked = checkbox.checked;
+        const row = document.getElementById(`row-${inquiryId}`);
+
+        try {
+            const response = await fetch('/contact/toggle-read', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: inquiryId }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                if (result.is_read) {
+                    row.classList.remove('unread');
+                    row.classList.add('read');
+                } else {
+                    row.classList.remove('read');
+                    row.classList.add('unread');
+                }
+            } else {
+                console.error('Error updating status:', result.message);
+                checkbox.checked = !isChecked;
+                alert('Error updating message status. Please try again.');
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+            checkbox.checked = !isChecked;
+            alert('Connection error. Check your network and try again.');
+        }
+    }
+</script>
